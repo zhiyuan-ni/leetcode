@@ -1,0 +1,16 @@
+"""
+Pattern:
+
+Core:
+
+Time:
+Space:
+
+Mistake:
+-
+"""
+
+
+class Solution:
+    def spiralOrder(self, matrix: list[list[int]]) -> list[int]:
+        pass

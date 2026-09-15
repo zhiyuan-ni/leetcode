@@ -1,0 +1,16 @@
+"""
+Pattern:
+
+Core:
+
+Time:
+Space:
+
+Mistake:
+-
+"""
+
+
+class Solution:
+    def searchInsert(self, nums: list[int], target: int) -> int:
+        pass
