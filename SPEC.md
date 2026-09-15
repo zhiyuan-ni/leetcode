@@ -98,10 +98,19 @@ LeetCode ID 使用三位补零格式。
 
 ## 5. Problem File Content
 
-每个文件只包含两部分：
+每个文件按顺序包含：
 
 1. 简短复习笔记
-2. 最终 Solution
+2. 其他解法（可选）
+3. 最终 Solution
+4. 本地测试块（可选）
+
+约定：
+
+* 最终可提交的解法类名固定为 `Solution`，可直接复制到 LeetCode 提交。
+* 其他值得保留的解法（如暴力解）使用 `Solution<Approach>` 命名，例如 `SolutionBruteForce`，放在 `Solution` 之前。
+* 保留多个解法时，笔记中分别写出每个解法的 Core 和复杂度。
+* 测试块放在文件末尾的 `if __name__ == "__main__":` 中，只用于本地验证，不影响提交。
 
 示例：
 
@@ -110,14 +119,30 @@ LeetCode ID 使用三位补零格式。
 Pattern: Hash Map
 
 Core:
-遍历 nums 时检查 target - num 是否已经出现。
+- BruteForce: 枚举所有 i < j 的下标对。
+- Solution: 遍历 nums 时检查 target - num 是否已经出现。
 
-Time: O(n)
-Space: O(n)
+Time:
+- BruteForce: O(n^2)
+- Solution: O(n)
+
+Space:
+- BruteForce: O(1)
+- Solution: O(n)
 
 Mistake:
 - 必须先查询再插入，否则可能使用同一个元素两次。
 """
+
+
+class SolutionBruteForce:
+    def twoSum(self, nums: list[int], target: int) -> list[int]:
+        n = len(nums)
+
+        for i in range(n):
+            for j in range(i + 1, n):
+                if nums[i] + nums[j] == target:
+                    return [i, j]
 
 
 class Solution:
@@ -131,7 +156,17 @@ class Solution:
                 return [seen[need], i]
 
             seen[num] = i
+
+
+if __name__ == "__main__":
+    for s in (SolutionBruteForce(), Solution()):
+        assert s.twoSum([2, 7, 11, 15], 9) == [0, 1]
+        assert s.twoSum([3, 2, 4], 6) == [1, 2]
+        assert s.twoSum([3, 3], 6) == [0, 1]
+    print("ok")
 ```
+
+只有一种解法时，省略其他解法部分，Core / Time / Space 直接写单行即可。
 
 文件顶部笔记应尽量控制在能够快速复习的长度。
 
