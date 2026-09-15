@@ -21,7 +21,7 @@
 | Problem | Status | Review |
 |---|---|---|
 | [1. Two Sum](01_hash/001_two_sum.py) | 🟡 | |
-| [49. Group Anagrams](01_hash/049_group_anagrams.py) | | |
+| [49. Group Anagrams](01_hash/049_group_anagrams.py) | 🟡 | |
 | [128. Longest Consecutive Sequence](01_hash/128_longest_consecutive_sequence.py) | | |
 
 ## Two Pointers
