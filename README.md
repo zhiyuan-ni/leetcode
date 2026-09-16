@@ -5,6 +5,7 @@
 - Pattern 手册：[notes/patterns.md](notes/patterns.md)
 - 错题本：[notes/mistakes.md](notes/mistakes.md)
 - 复习记录：[notes/review.md](notes/review.md)
+- 交接说明：[HANDOFF.md](HANDOFF.md)
 
 ## Status Legend
 
