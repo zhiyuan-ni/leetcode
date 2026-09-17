@@ -30,7 +30,7 @@
 | Problem | Status | Review |
 |---|---|---|
 | [283. Move Zeroes](02_two_pointers/283_move_zeroes.py) | 🟡 | |
-| [11. Container With Most Water](02_two_pointers/011_container_with_most_water.py) | | |
+| [11. Container With Most Water](02_two_pointers/011_container_with_most_water.py) | 🟡 | |
 | [15. 3Sum](02_two_pointers/015_3sum.py) | | |
 | [42. Trapping Rain Water](02_two_pointers/042_trapping_rain_water.py) | | |
 
