@@ -219,3 +219,17 @@ n = 5 万：`range(len(s))` + `s[r]` + 两处 `max()` 约 8.9 ms；改用 `enume
 
 ---
 
+### 438. Find All Anagrams in a String
+
+- 字符转编码写成 `oct(c)`：`oct` 是把整数转成八进制字符串（`oct(8) == '0o10'`），传入字符报 `TypeError: 'str' object cannot be interpreted as an integer`。字符转编码是 `ord`，反过来是 `chr`。
+
+**易错点：`Counter` / `dict` 计数减到 0 后的键**
+
+窗口移出字符后计数变 0，键还留在字典里。本地 Python 3.9 的 `Counter({'a': 2, 'b': 0}) == Counter({'a': 2})` 为 `False`，3.10+（LeetCode）为 `True`；普通 `dict` 在任何版本都不相等。同一份代码 LeetCode 能过、本地失败。计数减到 0 时 `del`，或者只有小写字母时直接用 26 位数组。
+
+**易错点：O(1) 比较在 Python 里收益很小**
+
+维护「还有几个字母次数没对上」可以把每步比较降到 O(1)，但 n = 3 万时实测 3 ~ 5 ms，26 位数组直接 `==` 比较 4 ~ 6 ms：长度 26 的列表比较在 C 层完成，比多写的几个 Python `if` 更快。
+
+---
+
