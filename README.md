@@ -38,7 +38,7 @@
 
 | Problem | Status | Review |
 |---|---|---|
-| [3. Longest Substring Without Repeating Characters](03_sliding_window/003_longest_substring_without_repeating_characters.py) | | |
+| [3. Longest Substring Without Repeating Characters](03_sliding_window/003_longest_substring_without_repeating_characters.py) | 🟡 | |
 | [438. Find All Anagrams in a String](03_sliding_window/438_find_all_anagrams_in_a_string.py) | | |
 
 ## Subarray
