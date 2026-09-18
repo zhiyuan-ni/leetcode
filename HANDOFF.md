@@ -8,11 +8,12 @@
 |---|---|
 | 01_hash | 3 / 3 完成，全部 🟡 |
 | 02_two_pointers | 4 / 4 完成，全部 🟡 |
-| 其余 14 类 | 未开始，均为空壳文件 |
+| 03_sliding_window | 2 / 2 完成，3 🟡、438 🟢 |
+| 其余 13 类 | 未开始，均为空壳文件 |
 
-- 已完成：1、49、128；283、11、15、42。
-- 下一题：[3. Longest Substring Without Repeating Characters](03_sliding_window/003_longest_substring_without_repeating_characters.py)。
-- `notes/patterns.md` 已写 Hash、Two Pointers 两节；`notes/mistakes.md` 有七题记录；`notes/review.md` 仍为空（还没开始二刷）。
+- 已完成：1、49、128；283、11、15、42；3、438。
+- 下一题：[560. Subarray Sum Equals K](04_subarray/560_subarray_sum_equals_k.py)。组内顺序以 README 为准（560 → 239 → 76），不是文件名顺序。
+- `notes/patterns.md` 已写 Hash、Two Pointers、Sliding Window 三节；`notes/mistakes.md` 有九题记录；`notes/review.md` 仍为空（还没开始二刷）。
 - `templates/` 五个文件都是占位说明，按 SPEC 要等 Pattern 多次出现后再写，不要提前填。
 
 ## 用户希望的协作方式
@@ -70,7 +71,7 @@ SPEC 允许题目文件带测试块，已形成的习惯：
 
 - 仓库：https://github.com/zhiyuan-ni/leetcode ，分支 `main`，直接提交推送，不走 PR。
 - 提交信息用 SPEC 第 13 节的前缀：`solve:` / `notes:` / `review:` / `template:` / `docs:` / `chore:`。规范改动和做题记录分开提交。
-- 本地 Python 是 3.9（`list[int]` 注解可用）。链表 / 二叉树题的空壳文件已加 `from __future__ import annotations`，这样注释掉 Node 定义也能本地运行。
+- 本地 Python 是 3.9（`list[int]` 注解可用），LeetCode 是 3.10+。两者行为有差异时要在测试注释里写明，例如 `Counter` 里值为 0 的键：3.9 比较不相等，3.10+ 相等（438）。链表 / 二叉树题的空壳文件已加 `from __future__ import annotations`，这样注释掉 Node 定义也能本地运行。
 - macOS 没有 `timeout` 命令。跑可能死循环的测试要自己控制规模。
 - **题目清单已核对过**：与 leetcode.cn 官方「热题 100」学习计划逐题比对，题号、标题、分类、组内顺序全部一致；函数签名与 leetcode.com 官方 Python3 模板一致。**不要再重新核对。**
 - leetcode.cn 和 leetcode.com 的网页与 GraphQL 接口都会挡 curl / WebFetch（403）。需要抓取时用内置浏览器打开页面，再在页面里调用 `/graphql/`。
