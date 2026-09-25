@@ -54,7 +54,7 @@
 | Problem | Status | Review |
 |---|---|---|
 | [53. Maximum Subarray](05_array/053_maximum_subarray.py) | 🟢 | |
-| [56. Merge Intervals](05_array/056_merge_intervals.py) | | |
+| [56. Merge Intervals](05_array/056_merge_intervals.py) | 🟡 | |
 | [189. Rotate Array](05_array/189_rotate_array.py) | | |
 | [238. Product of Array Except Self](05_array/238_product_of_array_except_self.py) | | |
 | [41. First Missing Positive](05_array/041_first_missing_positive.py) | | |
