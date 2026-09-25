@@ -47,7 +47,7 @@
 |---|---|---|
 | [560. Subarray Sum Equals K](04_subarray/560_subarray_sum_equals_k.py) | 🟡 | |
 | [239. Sliding Window Maximum](04_subarray/239_sliding_window_maximum.py) | 🟡 | |
-| [76. Minimum Window Substring](04_subarray/076_minimum_window_substring.py) | | |
+| [76. Minimum Window Substring](04_subarray/076_minimum_window_substring.py) | 🟡 | |
 
 ## Array
 
