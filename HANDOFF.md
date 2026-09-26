@@ -9,12 +9,14 @@
 | 01_hash | 3 / 3 完成，全部 🟡 |
 | 02_two_pointers | 4 / 4 完成，全部 🟡 |
 | 03_sliding_window | 2 / 2 完成，3 🟡、438 🟢 |
-| 04_subarray | 2 / 3 完成，560、239 均 🟡 |
-| 其余 13 类 | 未开始，均为空壳文件 |
+| 04_subarray | 3 / 3 完成，全部 🟡 |
+| 05_array | 5 / 5 完成，53、189 🟢，其余 🟡 |
+| 其余 11 类 | 未开始，均为空壳文件 |
 
-- 已完成：1、49、128；283、11、15、42；3、438；560、239。
-- 下一题：[76. Minimum Window Substring](04_subarray/076_minimum_window_substring.py)，做完 04_subarray 就满了，届时在 `patterns.md` 里补一节（前缀和 + 哈希、单调队列）。组内顺序以 README 为准（560 → 239 → 76），不是文件名顺序。
-- `notes/patterns.md` 已写 Hash、Two Pointers、Sliding Window 三节；`notes/mistakes.md` 有十一题记录；`notes/review.md` 仍为空（还没开始二刷）。
+- 已完成：1、49、128；283、11、15、42；3、438；560、239、76；53、56、189、238、41。
+- 下一题：[73. Set Matrix Zeroes](06_matrix/073_set_matrix_zeroes.py)。组内顺序以 README 为准（73 → 54 → 48 → 240），不是文件名顺序。
+- `notes/patterns.md` 已写 Hash、Two Pointers、Sliding Window、Subarray、Array 五节；`notes/mistakes.md` 有十六题记录；`notes/review.md` 仍为空（还没开始二刷）。
+- **反复犯的一类错**：循环条件里藏线性操作（128 的 `min()`、238 的 `nums.index()`、41 的 `set(nums)`），每次都把 O(n) 变成 O(n^2)。复盘时固定检查这一项。
 - `templates/` 五个文件都是占位说明，按 SPEC 要等 Pattern 多次出现后再写，不要提前填。
 
 ## 用户希望的协作方式
