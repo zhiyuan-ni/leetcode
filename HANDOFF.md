@@ -11,11 +11,14 @@
 | 03_sliding_window | 2 / 2 完成，3 🟡、438 🟢 |
 | 04_subarray | 3 / 3 完成，全部 🟡 |
 | 05_array | 5 / 5 完成，53、189 🟢，其余 🟡 |
-| 其余 11 类 | 未开始，均为空壳文件 |
+| 06_matrix | 4 / 4 完成，240 🟢，其余 🟡 |
+| 07_linked_list | 1 / 14 完成，160 🟡 |
+| 其余 9 类 | 未开始，均为空壳文件 |
 
-- 已完成：1、49、128；283、11、15、42；3、438；560、239、76；53、56、189、238、41。
-- 下一题：[73. Set Matrix Zeroes](06_matrix/073_set_matrix_zeroes.py)。组内顺序以 README 为准（73 → 54 → 48 → 240），不是文件名顺序。
-- `notes/patterns.md` 已写 Hash、Two Pointers、Sliding Window、Subarray、Array 五节；`notes/mistakes.md` 有十六题记录；`notes/review.md` 仍为空（还没开始二刷）。
+- 已完成：1、49、128；283、11、15、42；3、438；560、239、76；53、56、189、238、41；73、54、48、240；160。
+- 下一题：[206. Reverse Linked List](07_linked_list/206_reverse_linked_list.py)。链表这一类有 14 题，是最大的一类。
+- 链表题的空壳文件里 `ListNode` 定义是注释掉的，测试块要自己补一个（用 `if "ListNode" not in globals():` 兜底，解开注释也不冲突）。链表测试要点：用 `is` 比对象而不是比 val；调用前后各做一次 next 指针快照，确认解法没有改动结构。
+- `notes/patterns.md` 已写 Hash、Two Pointers、Sliding Window、Subarray、Array、Matrix 六节；`notes/mistakes.md` 有二十一题记录；`notes/review.md` 仍为空（还没开始二刷）。
 - **反复犯的一类错**：循环条件里藏线性操作（128 的 `min()`、238 的 `nums.index()`、41 的 `set(nums)`），每次都把 O(n) 变成 O(n^2)。复盘时固定检查这一项。
 - `templates/` 五个文件都是占位说明，按 SPEC 要等 Pattern 多次出现后再写，不要提前填。
 
