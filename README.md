@@ -66,7 +66,7 @@
 | [73. Set Matrix Zeroes](06_matrix/073_set_matrix_zeroes.py) | 🟡 | |
 | [54. Spiral Matrix](06_matrix/054_spiral_matrix.py) | 🟡 | |
 | [48. Rotate Image](06_matrix/048_rotate_image.py) | 🟡 | |
-| [240. Search a 2D Matrix II](06_matrix/240_search_a_2d_matrix_ii.py) | | |
+| [240. Search a 2D Matrix II](06_matrix/240_search_a_2d_matrix_ii.py) | 🟢 | |
 
 ## Linked List
 
