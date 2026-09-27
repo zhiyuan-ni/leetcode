@@ -506,3 +506,26 @@ A = `[1,2,9]`、B = `[2,9]` 共享尾部的 9，按值比较会先命中 2。测
 
 ---
 
+### 206. Reverse Linked List
+
+迭代解一次通过。递归解有四处错误，在 scratchpad 里每次修一个再跑，`[1,2,3]` 跑完后的指针如下：
+
+| 步骤 | 改动 | 测试结果 | `[1,2,3]` 的指针 |
+|---|---|---|---|
+| 0 | 原代码 | 示例 1 `AttributeError` | 1→2, 2→3, 3→2（中途崩溃） |
+| 1 | 加 `return new_head` | 示例 1 成环 | 1→2, 2→3, 3→1 |
+| 2 | `new_head.next = head` 改成 `head.next.next = head` | 示例 1 成环 | 1→2, 2→1, 3→2 |
+| 3 | 加 `head.next = None` | 空链表 `AttributeError` | 1→None, 2→1, 3→2 |
+| 4 | 出口改成 `head is None or head.next is None` | 全过 | |
+
+- **只有出口有 `return`**：其他层隐式返回 `None`，上一层执行 `None.next = head` 崩溃。和 11 题暴力解忘了 `return res` 是同一类错，这是第 2 次。
+- **接错位置**：`reverseList(head.next)` 返回的是反转后的**新头**（始终是 3），每层都去改 `3.next`，后一层覆盖前一层，最后 1→2→3→1 成环。`head` 应该接在子链的**尾巴**上，子链反转前的头 `head.next` 反转后正好是尾巴，所以写 `head.next.next = head`。
+- **没断开 `head.next`**：接上之后 `1.next` 还指向 2，而 `2.next` 已经是 1，1⇄2 成环。对最外层来说，这一步就是把原头变成新尾。
+- **出口没覆盖空链表**：只判断 `head.next is None`，输入 `None` 时直接崩溃。
+
+**易错点：递归深度**
+
+本地默认递归上限 1000，5000 个节点的递归解不放宽就 `RecursionError`；LeetCode 上限更高能过。递归实测 0.8 ms，迭代 0.25 ms，空间 O(n) 对 O(1)，迭代全面更优。
+
+---
+
