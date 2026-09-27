@@ -72,7 +72,7 @@
 
 | Problem | Status | Review |
 |---|---|---|
-| [160. Intersection of Two Linked Lists](07_linked_list/160_intersection_of_two_linked_lists.py) | | |
+| [160. Intersection of Two Linked Lists](07_linked_list/160_intersection_of_two_linked_lists.py) | 🟡 | |
 | [206. Reverse Linked List](07_linked_list/206_reverse_linked_list.py) | | |
 | [234. Palindrome Linked List](07_linked_list/234_palindrome_linked_list.py) | | |
 | [141. Linked List Cycle](07_linked_list/141_linked_list_cycle.py) | | |
