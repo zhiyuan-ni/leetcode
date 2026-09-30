@@ -79,7 +79,7 @@
 | [142. Linked List Cycle II](07_linked_list/142_linked_list_cycle_ii.py) | 🟡 | |
 | [21. Merge Two Sorted Lists](07_linked_list/021_merge_two_sorted_lists.py) | 🟢 | |
 | [2. Add Two Numbers](07_linked_list/002_add_two_numbers.py) | 🟢 | |
-| [19. Remove Nth Node From End of List](07_linked_list/019_remove_nth_node_from_end_of_list.py) | | |
+| [19. Remove Nth Node From End of List](07_linked_list/019_remove_nth_node_from_end_of_list.py) | 🟡 | |
 | [24. Swap Nodes in Pairs](07_linked_list/024_swap_nodes_in_pairs.py) | | |
 | [25. Reverse Nodes in k-Group](07_linked_list/025_reverse_nodes_in_k_group.py) | | |
 | [138. Copy List with Random Pointer](07_linked_list/138_copy_list_with_random_pointer.py) | | |
