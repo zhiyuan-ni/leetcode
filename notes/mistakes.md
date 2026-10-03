@@ -910,3 +910,32 @@ Set 解一次通过。快慢指针的第二阶段一次写对，错误都在第�
 
 ---
 
+### 23. Merge k Sorted Lists
+
+**堆解第一版：三处**（用户在复盘前自己改好）
+
+- 空链表也入堆：`lists[i].val` 在 `[[]]` 时 `None.val` 崩溃。
+- `i, node = heapq.heappop(minheap)[1], heapq.heappop(minheap)[2]`：为了分别取下标和节点 pop 了两次，每轮丢一个节点，示例 1 `IndexError`。一次 pop 拆包即可：`_, i, node = heapq.heappop(minheap)`。
+- `while True` 里先 pop 后判空：`lists = []` 时从空堆 pop。
+
+**堆解第二版：多余的特判**
+
+开头 `if not lists: return None`：`lists` 为空时堆也为空，`while minheap` 一次不执行，直接返回 `dummy.next`（`None`），删掉后 1223 组照样全过。`while True` + 循环内 `if not minheap: return` 改成 `while minheap:` + 循环后 `return`，和 21、2 的结构一致。这是「特判过多」第 5 次。
+
+**暴力解：`heads = lists` 没有复制**
+
+`heads` 和 `lists` 是同一个 list 对象，`heads[min_i] = heads[min_i].next` 改的就是调用方的 `lists`，调用后全变成 `None`。改成 `heads = list(lists)`，多 O(k) 空间。和 148 的 `small = left` 是同一个机制：`=` 只让名字指向对象，不复制。
+
+**实测（总节点数 1 万）**
+
+| 写法 | 1 万条单节点 | 100 条各 100 个 | 1 条 1 万个 |
+|---|---|---|---|
+| 堆 | 4.1 ms | 2.4 ms | 1.2 ms |
+| 两两分治合并 | 10.7 ms | 4.6 ms | 0.0 ms |
+| 每次扫 k 个头（暴力解） | 3415 ms | 49 ms | 1.3 ms |
+| 一条一条依次合并 | 1492 ms | 29 ms | 0.0 ms |
+
+**易错点：堆里要加下标**：只放 `(val, node)` 时，值相同会比较两个 `ListNode`，`TypeError: '<' not supported`。本题写对了。
+
+---
+

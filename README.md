@@ -84,7 +84,7 @@
 | [25. Reverse Nodes in k-Group](07_linked_list/025_reverse_nodes_in_k_group.py) | 🟡 | |
 | [138. Copy List with Random Pointer](07_linked_list/138_copy_list_with_random_pointer.py) | 🟡 | |
 | [148. Sort List](07_linked_list/148_sort_list.py) | 🟡 | |
-| [23. Merge k Sorted Lists](07_linked_list/023_merge_k_sorted_lists.py) | | |
+| [23. Merge k Sorted Lists](07_linked_list/023_merge_k_sorted_lists.py) | 🟡 | |
 | [146. LRU Cache](07_linked_list/146_lru_cache.py) | | |
 
 ## Binary Tree
