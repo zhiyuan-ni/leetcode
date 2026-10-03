@@ -850,3 +850,63 @@ Set 解一次通过。快慢指针的第二阶段一次写对，错误都在第�
 
 ---
 
+### 148. Sort List
+
+**自顶向下，第一版：拆分 1 处 + 合并 3 处**
+
+- 找中点的循环让 `slow` 停在后半段开头（下标 `n // 2`），却执行 `slow.next = None` 并递归 `slow`：`slow` 同时进了两半，n=2 时 `left` 仍是 2 个节点，无限递归。
+
+| n | `slow` | `left` | `right` |
+|---|---|---|---|
+| 2 | 下标 1 | `[0, 1]` | `[1]` |
+| 4 | 下标 2 | `[0, 1, 2]` | `[2]` |
+
+- 合并三处：`while not left or not right` 条件写反；`small = small.next` 以为能移动 `left` / `right`；`dummy.next = small` 应为 `tail.next = small`。合并在 21 已写对（🟢），重写时四处错三处。
+
+| 步骤 | 改动 | 结果 |
+|---|---|---|
+| 0 | 原代码 | 示例 1 `RecursionError` |
+| 1 | 记 `prev`，在 `slow` 前断开 | 示例 1 得到 `[4]` |
+| 2 | `while left and right` | `AttributeError` |
+| 3 | 选中哪边移动哪边 | `AttributeError` |
+| 4 | `tail.next = small` | 全过 |
+
+**`small = small.next` 为什么不移动 `left`**：`=` 左边是裸名字时，只是让这个名字指向别的对象，不影响其他指向原对象的名字；左边是属性（`small.next = ...`）才会改对象本身，`left` 也看得到。和高频错误「原地修改写成重新绑定」（283、189、73、48 的 `nums = ...`）是同一个机制。
+
+**自顶向下，第二版：改了 `fast` 的起点，`slow` 的角色变了**
+
+`fast` 改从 `head.next` 出发后，`slow` 停在前半段最后一个，但仍是 `slow.next = None` 再递归 `slow`：n=2 时左右两半是同一个节点，合并时自己指向自己，成环。要先存 `mid = slow.next` 再断开、递归 `mid`。234、148 用的是同一个找中点写法，`slow` 分别是「后半段开头」和「前半段末尾」，断开方式必须跟着变。
+
+**自顶向下，第三版：只照搬了一半**
+
+建议把 `fast = fast.next` 和下一行合成 `fast = fast.next.next`，新行加上了、旧行没删，快指针一轮走 3 步，示例 2 崩溃。这是第 2 次只照搬一半（第 1 次是 25）。
+
+**自底向上，第一版：七处**
+
+| 步骤 | 改动 | 结果 |
+|---|---|---|
+| 1 | `Solution` 移到最外层（原来缩进到了 `SolutionTopDown` 里面） | 示例 1 得到 `[]` |
+| 2 | `split`、`merge` 加 `self` | 同上（循环没跑起来，看不出效果；只缺这一处时 `TypeError: split() takes 2 positional arguments but 3 were given`） |
+| 3 | `prev`、`cur` 的初始化移到每轮开头（原来在内层循环里，且内层循环用的是数长度后为 `None` 的 `cur`） | 同上 |
+| 4 | `dummy = ListNode(-1, head)` | 同上 |
+| 5 | `merge(right, cur)` → `merge(left, right)` | 示例 2 得到 `[-1, 0]` |
+| 6 | `prev` 走到合并结果的尾巴（原来只走一步） | 示例 2 得到 `[-1, 3, 4, 5, 0]` |
+| 7 | `split` 走 `step - 1` 步（原来走 `step` 步，切下 `step + 1` 个） | 全过，额外内存 0.4 KB |
+
+一次写了三个函数、50 多行，七处错误互相掩盖（第 2~4 步单独修都看不出效果）。下次先单独调用小函数验证，比如在 `[1,2,3,4,5]` 上 `split(head, 2)`，确认切下 `[1,2]`、返回节点 3。
+
+**自底向上，第二版：`while prev` 走过头**
+
+`prev` 要停在合并结果的最后一个节点，写成 `while prev:` 走到了 `None`，下一组 `None.next` 崩溃，应为 `while prev.next:`（用户随后自己改对）。和 234 正好相反：
+
+| 想要的效果 | 循环条件 | 出错的题 |
+|---|---|---|
+| 处理每个节点，最后停在 `None` | `while cur:` | 234 多写了 `.next`，漏掉最后一个 |
+| 停在最后一个节点上，之后还要用它 | `while cur.next:` | 148 少写了 `.next`，走过了头 |
+
+**命名**：`temp` 第 4 次（206、24、25、148），改为 `rest`；计数器 `s` 改为 `count`；`con` 改为直接写 `tail.next = left or right`。
+
+**易错点：内置 sort 取巧**：存进 list 用内置 `sort` 再重连只要 8 ms（C 实现），但额外内存 1.2 MB，达不到进阶的 O(1)。
+
+---
+
