@@ -13,13 +13,13 @@
 | 05_array | 5 / 5 完成，53、189 🟢，其余 🟡 |
 | 06_matrix | 4 / 4 完成，240 🟢，其余 🟡 |
 | 07_linked_list | 14 / 14 完成，21、2、24 🟢，其余 🟡 |
-| 08_binary_tree | 5 / 15 完成，94、543 🟡，104、226、101 🟢 |
+| 08_binary_tree | 6 / 15 完成，94、543 🟡，104、226、101、102 🟢 |
 | 其余 8 类 | 未开始，均为空壳文件 |
 
-- 已完成 39 题：1、49、128；283、11、15、42；3、438；560、239、76；53、56、189、238、41；73、54、48、240；160、206、234、141、142、21、2、19、24、25、138、148、23、146；94、104、226、101、543。
-- **下一题**：[102. Binary Tree Level Order Traversal](08_binary_tree/102_binary_tree_level_order_traversal.py)。二叉树测试块的构建函数从 543 复制（`from_level` / `to_level` / `from_shape` / `all_shapes` / `random_shape` / `chain`，都是显式栈）。
+- 已完成 40 题：1、49、128；283、11、15、42；3、438；560、239、76；53、56、189、238、41；73、54、48、240；160、206、234、141、142、21、2、19、24、25、138、148、23、146；94、104、226、101、543、102。
+- **下一题**：[108. Convert Sorted Array to Binary Search Tree](08_binary_tree/108_convert_sorted_array_to_binary_search_tree.py)。答案不唯一（任意一棵高度平衡的 BST 都对），测试块要验证性质（中序等于输入、每个节点左右高度差 ≤ 1），不能比对固定答案。二叉树测试块的构建函数从 102 复制（`from_level` / `to_level` / `from_shape` / `all_shapes` / `random_shape` / `chain`，都是显式栈）。
 - 组内顺序**以 README 为准**，不是文件名顺序。
-- `notes/patterns.md` 已写 Hash、Two Pointers、Sliding Window、Subarray、Array、Matrix、Linked List 七节；一类做完再补一节。`notes/mistakes.md` 有 39 题记录。`notes/review.md` 仍为空（还没开始二刷）。
+- `notes/patterns.md` 已写 Hash、Two Pointers、Sliding Window、Subarray、Array、Matrix、Linked List 七节；一类做完再补一节。`notes/mistakes.md` 有 40 题记录。`notes/review.md` 仍为空（还没开始二刷）。
 - `templates/` 五个文件都是占位说明，按 SPEC 要等 Pattern 多次出现后再写，不要提前填。五个模板是 backtracking、bfs_dfs、binary_search、sliding_window、union_find，没有链表；链表的几个积木（虚拟头、原地反转、快慢指针、有序合并）记在 `notes/patterns.md` 的 Linked List 一节。
 
 ## 用户希望的协作方式
@@ -47,7 +47,8 @@
 
 - 改文件前**先读一遍当前内容**；批量替换用带断言的脚本（`assert s.count(old) == 1`），断言失败就停下重新读，**不要覆盖**。
 - 曾经发生：代码替换因内容变了而失败，但同一批命令里的 README / notes 已经写入，结果提交了半套改动，只能 `git commit --amend` + `git push --force-with-lease` 修正。把代码和笔记的改动放进**同一个失败即全停**的脚本更安全。
-- 也发生过同一节内容被重复追加进 `notes/mistakes.md`（前一次脚本部分成功）。写完检查一下 `grep -n '^### ' notes/mistakes.md` 有没有重复标题。
+- 也发生过同一节内容被重复追加进 `notes/mistakes.md`（前一次脚本部分成功）。
+- 102 又发生一次半套提交：改代码的 Python 脚本断言失败，但同一条 Bash 里后面用 `;` 接着 `git add` / `git commit` / 改 HANDOFF / `git push`，全都照样执行了。**修改和提交分成两条 Bash 调用**，或者整条用 `set -e` + `&&`，确认脚本打印成功后再提交。写完检查一下 `grep -n '^### ' notes/mistakes.md` 有没有重复标题。
 - 用户说「修改下这个 commit」时用 amend + `--force-with-lease`，已推送也照做，这是个人仓库。
 
 ## 每题完成后的记录流程
@@ -119,7 +120,7 @@ if __name__ == "__main__":
 
 按出现次数排序，前三类已经反复出现：
 
-1. **循环条件里藏线性操作**（6 次）：128 的 `min()`、238 的 `nums.index(0)`、41 的 `set(nums)`、73 的 `in list`、25 的 `list.remove(最后一个)`（k=5000 时 70 ms，改 `pop()` 后 0.9 ms）、543 的递归版：每个节点都调用一次 O(子树) 的 `getDepth`，链上 O(n²)、平衡树上 O(n log n) 测不出来。每次都把 O(n) 变成 O(n²)。相关：141 在循环里每步 `float('inf')` 新建对象，空间悄悄变成 O(n)（232 KB）。循环体里不依赖循环变量的东西都提到外面。
+1. **循环条件里藏线性操作**（7 次）：128 的 `min()`、238 的 `nums.index(0)`、41 的 `set(nums)`、73 的 `in list`、25 的 `list.remove(最后一个)`（k=5000 时 70 ms，改 `pop()` 后 0.9 ms）、543 的递归版：每个节点都调用一次 O(子树) 的 `getDepth`，链上 O(n²)、平衡树上 O(n log n) 测不出来；102 的 `list.pop(0)`（题目规模下没超时，10 万个节点时 138 ms 对 6.7 ms）。每次都把 O(n) 变成 O(n²)。相关：141 在循环里每步 `float('inf')` 新建对象，空间悄悄变成 O(n)（232 KB）。循环体里不依赖循环变量的东西都提到外面。
 2. **对称分支复制后没换变量**（4 次）：11、15、239，移动 `r` 却判断 `nums[l]` / `height[l]`，都导致死循环；101 第二对写成 `check(right.right, right.right)`，自己和自己比。镜像代码逐项对照：起点、方向、区间端点、比较对象。
 3. **负数下标 / `-0` 陷阱**（2 次）：189 的 `nums[-0:]` 取到整个列表、48 的 `matrix[-i]` 在 `i=0` 时指向第 0 行。
 4. **遮蔽内置名字**：`dict`、`str`、`sum`、`next` 各一次。
