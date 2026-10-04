@@ -93,7 +93,7 @@
 |---|---|---|
 | [94. Binary Tree Inorder Traversal](08_binary_tree/094_binary_tree_inorder_traversal.py) | 🟡 | |
 | [104. Maximum Depth of Binary Tree](08_binary_tree/104_maximum_depth_of_binary_tree.py) | 🟢 | |
-| [226. Invert Binary Tree](08_binary_tree/226_invert_binary_tree.py) | | |
+| [226. Invert Binary Tree](08_binary_tree/226_invert_binary_tree.py) | 🟢 | |
 | [101. Symmetric Tree](08_binary_tree/101_symmetric_tree.py) | | |
 | [543. Diameter of Binary Tree](08_binary_tree/543_diameter_of_binary_tree.py) | | |
 | [102. Binary Tree Level Order Traversal](08_binary_tree/102_binary_tree_level_order_traversal.py) | | |
