@@ -282,13 +282,29 @@ if __name__ == "__main__":
                 cases.append((f"穷举 {to_level(root)}", root, n))
 
     rng = random.Random(98)
+    def valid_bst(shape, vals):
+        """先按形状建树，再按中序把严格递增的值依次填进去。
+        （random_shape 的编号是建树顺序、不是中序下标，不能直接按编号填值）"""
+        root, by_idx = from_shape(shape, [0] * len(vals))
+        stack, cur, i = [], root, 0
+        while cur or stack:
+            while cur:
+                stack.append(cur)
+                cur = cur.left
+            cur = stack.pop()
+            cur.val = vals[i]
+            i += 1
+            cur = cur.right
+        return root, by_idx
+
     for i in range(150):  # 随机合法 BST（形状随机，按中序填严格递增的值），以及改动一处后的版本
         n = rng.randint(1, 2000)
         vals = sorted(rng.sample(range(-10**6, 10**6), n))
         shape = random_shape(n, rng)
-        root, by_idx = from_shape(shape, vals)  # 形状编号就是中序下标，所以值按中序严格递增
+        root, by_idx = valid_bst(shape, vals)
+        assert reference(root, n), "测试自身的问题：随机生成的 BST 不合法"
         cases.append((f"随机合法 #{i}", root, n))
-        root, by_idx = from_shape(shape, vals)
+        root, by_idx = valid_bst(shape, vals)
         victim = by_idx[rng.randrange(n)]
         kind = rng.random()
         if kind < 0.4:
