@@ -98,7 +98,7 @@
 | [543. Diameter of Binary Tree](08_binary_tree/543_diameter_of_binary_tree.py) | 🟡 | |
 | [102. Binary Tree Level Order Traversal](08_binary_tree/102_binary_tree_level_order_traversal.py) | 🟢 | |
 | [108. Convert Sorted Array to Binary Search Tree](08_binary_tree/108_convert_sorted_array_to_binary_search_tree.py) | 🟢 | |
-| [98. Validate Binary Search Tree](08_binary_tree/098_validate_binary_search_tree.py) | | |
+| [98. Validate Binary Search Tree](08_binary_tree/098_validate_binary_search_tree.py) | 🟢 | |
 | [230. Kth Smallest Element in a BST](08_binary_tree/230_kth_smallest_element_in_a_bst.py) | | |
 | [199. Binary Tree Right Side View](08_binary_tree/199_binary_tree_right_side_view.py) | | |
 | [114. Flatten Binary Tree to Linked List](08_binary_tree/114_flatten_binary_tree_to_linked_list.py) | | |
