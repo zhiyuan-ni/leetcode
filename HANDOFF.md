@@ -13,13 +13,13 @@
 | 05_array | 5 / 5 完成，53、189 🟢，其余 🟡 |
 | 06_matrix | 4 / 4 完成，240 🟢，其余 🟡 |
 | 07_linked_list | 14 / 14 完成，21、2、24 🟢，其余 🟡 |
-| 08_binary_tree | 7 / 15 完成，94、543 🟡，104、226、101、102、108 🟢 |
+| 08_binary_tree | 8 / 15 完成，94、543 🟡，104、226、101、102、108、98 🟢 |
 | 其余 8 类 | 未开始，均为空壳文件 |
 
-- 已完成 41 题：1、49、128；283、11、15、42；3、438；560、239、76；53、56、189、238、41；73、54、48、240；160、206、234、141、142、21、2、19、24、25、138、148、23、146；94、104、226、101、543、102、108。
-- **下一题**：[98. Validate Binary Search Tree](08_binary_tree/098_validate_binary_search_tree.py)。注意「只比父子」的经典错误（要和整条祖先链的上下界比），以及相等的值不算 BST。二叉树测试块的构建函数从 102 复制（`from_level` / `to_level` / `from_shape` / `all_shapes` / `random_shape` / `chain`，都是显式栈）。
+- 已完成 42 题：1、49、128；283、11、15、42；3、438；560、239、76；53、56、189、238、41；73、54、48、240；160、206、234、141、142、21、2、19、24、25、138、148、23、146；94、104、226、101、543、102、108、98。
+- **下一题**：[230. Kth Smallest Element in a BST](08_binary_tree/230_kth_smallest_element_in_a_bst.py)。BST 的中序是升序，第 k 个就是中序第 k 个；进阶问频繁插入删除时怎么办。二叉树测试块的构建函数从 102 复制（`from_level` / `to_level` / `from_shape` / `all_shapes` / `random_shape` / `chain`，都是显式栈）。
 - 组内顺序**以 README 为准**，不是文件名顺序。
-- `notes/patterns.md` 已写 Hash、Two Pointers、Sliding Window、Subarray、Array、Matrix、Linked List 七节；一类做完再补一节。`notes/mistakes.md` 有 41 题记录。`notes/review.md` 仍为空（还没开始二刷）。
+- `notes/patterns.md` 已写 Hash、Two Pointers、Sliding Window、Subarray、Array、Matrix、Linked List 七节；一类做完再补一节。`notes/mistakes.md` 有 42 题记录。`notes/review.md` 仍为空（还没开始二刷）。
 - `templates/` 五个文件都是占位说明，按 SPEC 要等 Pattern 多次出现后再写，不要提前填。五个模板是 backtracking、bfs_dfs、binary_search、sliding_window、union_find，没有链表；链表的几个积木（虚拟头、原地反转、快慢指针、有序合并）记在 `notes/patterns.md` 的 Linked List 一节。
 
 ## 用户希望的协作方式
@@ -50,6 +50,7 @@
 - 也发生过同一节内容被重复追加进 `notes/mistakes.md`（前一次脚本部分成功）。
 - 102 又发生一次半套提交：改代码的 Python 脚本断言失败，但同一条 Bash 里后面用 `;` 接着 `git add` / `git commit` / 改 HANDOFF / `git push`，全都照样执行了。**修改和提交分成两条 Bash 调用**，或者整条用 `set -e` + `&&`，确认脚本打印成功后再提交。写完检查一下 `grep -n '^### ' notes/mistakes.md` 有没有重复标题。
 - 用户说「修改下这个 commit」时用 amend + `--force-with-lease`，已推送也照做，这是个人仓库。
+- 用户说「你来改好，先不记录」时只改代码、跑测试，不动 README / notes / HANDOFF，也不提交；等用户说「记录并提交」再一起做（98）。
 
 ## 每题完成后的记录流程
 
