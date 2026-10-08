@@ -1200,3 +1200,35 @@ res = []          # 类属性
 
 ---
 
+### 114. Flatten Binary Tree to Linked List
+
+**第一版（递归）：三处**
+
+```python
+if root.left and root.right:
+    temp = root.right
+    root.right = root.left
+    root.right.right = temp      # 接到了左孩子本身
+    root.left = None
+...
+return root
+```
+
+| 步骤 | 改动 | 结果 |
+|---|---|---|
+| 0 | 原代码 | 示例 1 沿 right 得到 `[1, 2, 3, 5, 6]`，丢了 4 |
+| 1 | 原右子树接到左子树最右边的节点后面 | `[1, 2]`（只有左孩子）原样不动 |
+| 2 | 条件改成只要有左子树 | 全过 |
+| 3 | 去掉 `return root` | 全过，不再提示「返回了值」 |
+
+- **接错了位置**：`root.right.right` 是原左孩子 2 的右孩子，2 本来就有右孩子 4，被覆盖了。要从左子树一路往右走到底（`pre`）再接。
+- **条件多了一半**：只有左子树、没有右子树时也要搬，右子树为空就接一个 `None`，不需要特判（226 同理）。
+- **返回了 `root`**：题目要求原地修改、不返回。
+- `temp` 第 6 次出现，改为 `right_subtree`。
+
+**循环版一次写对**（按第二层提示）：先接原右子树、再搬左子树、再清 `left`，`cur = cur.right` 放在 `if` 外面。额外内存从递归版的 774 KB 降到 0 KB。递归版修好后，`self.flatten(root.left)` 永远收到 `None`，真正干活的只有末尾的 `self.flatten(root.right)`——尾递归换成循环就是进阶写法。
+
+**测试块自身的问题**：计时时，前面已经建了几十万个节点，深递归分配栈帧会触发一次全量 GC，正确的递归写法被量成 74 ms、误报成 O(n²)。计时期间改为 `gc.disable()` 后稳定在 0.5~1 ms。
+
+---
+
