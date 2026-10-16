@@ -1232,3 +1232,30 @@ return root
 
 ---
 
+### 105. Construct Binary Tree from Preorder and Inorder Traversal
+
+讨论阶段：「两个子树长度都为 0 时返回 None」——那是叶子，叶子本身要建出来；停止条件是这一段本身为空。「值 → 中序下标」的字典在递归之前建一次（用户答出了字典）。
+
+**第一版：两处区间计算 + 状态放在 self 上**
+
+```python
+idx = self.index.get(self.preorder[start])
+left = self.build_tree_internal(start+ 1, start + idx + 1)
+right = self.build_tree_internal(start + idx + 1, end- start)
+```
+
+| 步骤 | 改动 | 结果 |
+|---|---|---|
+| 0 | 原代码 | 示例 1 `IndexError` |
+| 1 | 右子树前序终点 `end - start` → `end`（用户自己改了） | 仍然 `IndexError` |
+| 2 | 加中序起点参数，`left_size = idx - in_start` | 全过，3000 个节点的左链 1.3 ms |
+
+- **把绝对下标当成左子树节点数**：字典里存的是根在整个 `inorder` 里的下标，只有中序起点为 0 时才等于左子树大小。示例 1 右子树的中序是 `[15, 20, 7]`（起点 2），20 的下标 3，左子树只有 1 个（3 - 2），按 3 算就越界。递归只传了前序的 `(start, end)`，没有中序起点就算不出来——提示里专门说过这一点。
+- **右子树终点 `end - start`**：右子树是「这一段里左子树后面的全部」，终点就是 `end`；`end - start` 是把长度当成了位置。
+- **状态放在 `self` 上**：类属性 `index / preorder / inorder` 和 `__init__` 里同名的实例属性重复声明（199 同样的问题）；`self.index` 每次调用都往里加、从不清空，同一个实例建完两棵树后是 `{9: 0, 3: 1, 15: 2, 20: 3, 7: 4, 2: 0, 1: 1}`。这是「状态放错地方」第 3 次（543、199、105）。改成 `buildTree` 的局部变量，`build` 写成内部函数直接读取。
+- `index.get(...)`：键一定存在，用 `index[...]`，出错时报在正确的位置。注释掉的旧代码、多余的 `if not inorder` 删掉。
+
+**命名**：`build_tree_internal` → `build`；`idx` → `root_idx`；`start / end` → `pre_start / pre_end`，和新加的 `in_start` 配对。
+
+---
+
