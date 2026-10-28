@@ -112,7 +112,7 @@
 | Problem | Status | Review |
 |---|---|---|
 | [200. Number of Islands](09_graph/200_number_of_islands.py) | 🟡 | |
-| [994. Rotting Oranges](09_graph/994_rotting_oranges.py) | | |
+| [994. Rotting Oranges](09_graph/994_rotting_oranges.py) | 🟢 | |
 | [207. Course Schedule](09_graph/207_course_schedule.py) | | |
 | [208. Implement Trie (Prefix Tree)](09_graph/208_implement_trie_prefix_tree.py) | | |
 
