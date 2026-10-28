@@ -13,13 +13,13 @@
 | 05_array | 5 / 5 完成，53、189 🟢，其余 🟡 |
 | 06_matrix | 4 / 4 完成，240 🟢，其余 🟡 |
 | 07_linked_list | 14 / 14 完成，21、2、24 🟢，其余 🟡 |
-| 08_binary_tree | 12 / 15 完成，94、543、114、105 🟡，104、226、101、102、108、98、230、199 🟢 |
+| 08_binary_tree | 13 / 15 完成，94、543、114、105、437 🟡，104、226、101、102、108、98、230、199 🟢 |
 | 其余 8 类 | 未开始，均为空壳文件 |
 
-- 已完成 46 题：1、49、128；283、11、15、42；3、438；560、239、76；53、56、189、238、41；73、54、48、240；160、206、234、141、142、21、2、19、24、25、138、148、23、146；94、104、226、101、543、102、108、98、230、199、114、105。
-- **下一题**：[437. Path Sum III](08_binary_tree/437_path_sum_iii.py)。路径不必从根开始、不必到叶子，只能向下；前缀和 + 哈希（560 的树上版本），注意回溯时要把当前前缀和的计数减回去。二叉树测试块的构建函数从 102 复制（`from_level` / `to_level` / `from_shape` / `all_shapes` / `random_shape` / `chain`，都是显式栈）。
+- 已完成 47 题：1、49、128；283、11、15、42；3、438；560、239、76；53、56、189、238、41；73、54、48、240；160、206、234、141、142、21、2、19、24、25、138、148、23、146；94、104、226、101、543、102、108、98、230、199、114、105、437。
+- **下一题**：[236. Lowest Common Ancestor of a Binary Tree](08_binary_tree/236_lowest_common_ancestor_of_a_binary_tree.py)，之后是 124，做完二叉树一类要补 `notes/patterns.md` 的 Binary Tree 一节。437 用户先写暴力、再在引导下推到前缀和；「什么时候知道左右子树走完」这类递归时机问题，用前序 / 中序 / 后序三个位置的骨架讲清楚有效。二叉树测试块的构建函数从 102 复制（`from_level` / `to_level` / `from_shape` / `all_shapes` / `random_shape` / `chain`，都是显式栈）。
 - 组内顺序**以 README 为准**，不是文件名顺序。
-- `notes/patterns.md` 已写 Hash、Two Pointers、Sliding Window、Subarray、Array、Matrix、Linked List 七节；一类做完再补一节。`notes/mistakes.md` 有 46 题记录。`notes/review.md` 仍为空（还没开始二刷）。
+- `notes/patterns.md` 已写 Hash、Two Pointers、Sliding Window、Subarray、Array、Matrix、Linked List 七节；一类做完再补一节。`notes/mistakes.md` 有 47 题记录。`notes/review.md` 仍为空（还没开始二刷）。
 - `templates/` 五个文件都是占位说明，按 SPEC 要等 Pattern 多次出现后再写，不要提前填。五个模板是 backtracking、bfs_dfs、binary_search、sliding_window、union_find，没有链表；链表的几个积木（虚拟头、原地反转、快慢指针、有序合并）记在 `notes/patterns.md` 的 Linked List 一节。
 
 ## 用户希望的协作方式
