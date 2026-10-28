@@ -104,7 +104,7 @@
 | [114. Flatten Binary Tree to Linked List](08_binary_tree/114_flatten_binary_tree_to_linked_list.py) | 🟡 | |
 | [105. Construct Binary Tree from Preorder and Inorder Traversal](08_binary_tree/105_construct_binary_tree_from_preorder_and_inorder_traversal.py) | 🟡 | |
 | [437. Path Sum III](08_binary_tree/437_path_sum_iii.py) | 🟡 | |
-| [236. Lowest Common Ancestor of a Binary Tree](08_binary_tree/236_lowest_common_ancestor_of_a_binary_tree.py) | | |
+| [236. Lowest Common Ancestor of a Binary Tree](08_binary_tree/236_lowest_common_ancestor_of_a_binary_tree.py) | 🟢 | |
 | [124. Binary Tree Maximum Path Sum](08_binary_tree/124_binary_tree_maximum_path_sum.py) | | |
 
 ## Graph

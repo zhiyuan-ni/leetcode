@@ -1289,3 +1289,14 @@ dfs(node.right, cur)
 
 ---
 
+### 236. Lowest Common Ancestor of a Binary Tree
+
+（本题一次通过，未出错）两层提示后（答案节点的特征 → 递归返回「找到的 p / q / 答案 / None」），直接用 `lowestCommonAncestor` 本身递归，遇到 `None` / p / q 提前返回、后序合并左右结果，用 `is` 比较节点。23113 组用例全过，10^5 个节点最慢 23.6 ms。写法上（用户自己改的）：
+
+- 开头三个分支（`None` → `None`、`p` → `p`、`q` → `q`）返回的都是 `root`，合成 `if root is None or root is p or root is q: return root`。
+- 结尾 `if / elif / elif / return None` 合成 `if left and right: return root` + `return left or right`。`TreeNode` 没有 `__bool__`，节点对象恒为真，值为 0 的节点不会被误判。
+
+**易错点**（测试里拦的典型错误）：返回 `root.val` 而不是节点；按 `.val` 的真假判断（含 0 的树答错）；答案存在类属性上（第二次调用带着上一次的结果）；每层都重新搜子树看 p、q 在哪边，O(n^2)，10^5 的链超过 2 s。
+
+---
+
