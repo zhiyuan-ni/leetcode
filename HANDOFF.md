@@ -13,13 +13,13 @@
 | 05_array | 5 / 5 完成，53、189 🟢，其余 🟡 |
 | 06_matrix | 4 / 4 完成，240 🟢，其余 🟡 |
 | 07_linked_list | 14 / 14 完成，21、2、24 🟢，其余 🟡 |
-| 08_binary_tree | 14 / 15 完成，94、543、114、105、437 🟡，104、226、101、102、108、98、230、199、236 🟢 |
+| 08_binary_tree | 15 / 15 完成，94、543、114、105、437、124 🟡，104、226、101、102、108、98、230、199、236 🟢 |
 | 其余 8 类 | 未开始，均为空壳文件 |
 
-- 已完成 48 题：1、49、128；283、11、15、42；3、438；560、239、76；53、56、189、238、41；73、54、48、240；160、206、234、141、142、21、2、19、24、25、138、148、23、146；94、104、226、101、543、102、108、98、230、199、114、105、437、236。
-- **下一题**：[124. Binary Tree Maximum Path Sum](08_binary_tree/124_binary_tree_maximum_path_sum.py)，二叉树最后一题；做完要补 `notes/patterns.md` 的 Binary Tree 一节。本机是 Python 3.9，主线程递归 3~6 万层会段错误：节点上限 3×10^4 以上的题，深链用例放进大栈线程里跑（照抄 236 测试块的 `run_deep`，线程里收不到 SIGALRM，用 `join(timeout)` 判超时）。
+- 已完成 49 题：1、49、128；283、11、15、42；3、438；560、239、76；53、56、189、238、41；73、54、48、240；160、206、234、141、142、21、2、19、24、25、138、148、23、146；94、104、226、101、543、102、108、98、230、199、114、105、437、236、124。
+- **下一题**：[200. Number of Islands](09_graph/200_number_of_islands.py)，09_graph 的第一题（组内 200、994、207、208）。本机是 Python 3.9，主线程递归 3~6 万层会段错误：网格 DFS 或节点上限 3×10^4 以上的题，深的用例放进大栈线程里跑（照抄 236 / 124 测试块的 `run_deep`，线程里收不到 SIGALRM，用 `join(timeout)` 判超时）。
 - 组内顺序**以 README 为准**，不是文件名顺序。
-- `notes/patterns.md` 已写 Hash、Two Pointers、Sliding Window、Subarray、Array、Matrix、Linked List 七节；一类做完再补一节。`notes/mistakes.md` 有 48 题记录。`notes/review.md` 仍为空（还没开始二刷）。
+- `notes/patterns.md` 已写 Hash、Two Pointers、Sliding Window、Subarray、Array、Matrix、Linked List、Binary Tree 八节；一类做完再补一节。`notes/mistakes.md` 有 49 题记录。`notes/review.md` 仍为空（还没开始二刷）。
 - `templates/` 五个文件都是占位说明，按 SPEC 要等 Pattern 多次出现后再写，不要提前填。五个模板是 backtracking、bfs_dfs、binary_search、sliding_window、union_find，没有链表；链表的几个积木（虚拟头、原地反转、快慢指针、有序合并）记在 `notes/patterns.md` 的 Linked List 一节。
 
 ## 用户希望的协作方式
